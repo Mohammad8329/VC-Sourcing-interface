@@ -5,7 +5,7 @@ A thesis-driven sourcing and enrichment interface tailored for venture capital a
 ## 🚀 Features
 
 - **Company Discovery**: Filter over 20 mock companies by Stage, Sector, Employee Count, and Location. Sort by metrics and search via fuzzy matching.
-- **AI Enrichment**: Instantly scrapes a target company's public assets (homepage, about, carriers, blog) using Jina AI and extracts a structured intelligence report via Grok (`grok-2-latest`) inside a persistent panel.
+- **AI Enrichment**: Instantly scrapes a target company's public assets (homepage, about, carriers, blog) using Jina AI and extracts a structured intelligence report via Google API (`@google/genai`) inside a persistent panel.
 - **Saved Searches**: Build complex queries to match a fund's investment thesis and save them for 1-click execution.
 - **List Management**: Add prospective companies to designated sourcing lists, track them, and export to CSV for data-room ingestion.
 - **Global `Cmd+K` Palette**: Instantly jump from any context directly to a company profile.
@@ -16,7 +16,7 @@ A thesis-driven sourcing and enrichment interface tailored for venture capital a
 - **Framework**: Next.js 14 (App Router)
 - **Styling**: Tailwind CSS & shadcn/ui
 - **State Management**: Zustand with `localStorage` persistence
-- **Extraction APIs**: Jina AI Reader API (public fallback) + xAI Grok (`grok-2-latest`)
+- **Extraction APIs**: Jina AI Reader API (public fallback) + Google API (`@google/genai`)
 - **Language**: TypeScript
 
 ## 🔧 Getting Started
@@ -27,9 +27,9 @@ A thesis-driven sourcing and enrichment interface tailored for venture capital a
    ```
 
 2. **Configure Environment Variables**
-   Create a `.env.local` file at the root of the project with your xAI (Grok) API key:
+   Create a `.env.local` file at the root of the project with your Google API key:
    ```env
-   XAI_API_KEY="xai-..."
+   GEMINI_API_KEY="your-google-api-key"
    ```
    *(Note: Firecrawl was replaced with the free Jina AI `r.jina.ai` endpoint as it doesn't require an API key to scrape markdown representations of pages.)*
 
@@ -41,7 +41,7 @@ A thesis-driven sourcing and enrichment interface tailored for venture capital a
 
 ## 🔍 Note on AI Enrichment
 
-The Live AI Enrichment uses a Next.js `/api/enrich` route. It takes the target company's URL, passes it through the Jina Reader API to get a cleanly extracted Markdown version of the website, then prompts `grok-2-latest` to populate a rigid JSON shape for summary, signals, and keywords. 
+The Live AI Enrichment uses a Next.js `/api/enrich` route. It takes the target company's URL, passes it through the Jina Reader API to get a cleanly extracted Markdown version of the website, then prompts the Google API to populate a rigid JSON shape for summary, signals, and keywords. 
 
 ### Deployment
 
