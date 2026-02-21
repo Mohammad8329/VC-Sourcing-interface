@@ -34,7 +34,6 @@ export default async function CompanyPage({ params }: { params: Promise<{ id: st
                     <CompanyProfile company={company} />
 
                     <div className="rounded-xl border bg-card p-6 shadow-sm">
-                        <h2 className="text-lg font-semibold tracking-tight mb-4">Analyst Notes</h2>
                         <NoteEditor companyId={company.id} />
                     </div>
 

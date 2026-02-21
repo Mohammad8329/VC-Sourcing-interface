@@ -56,7 +56,7 @@ export function FilterPanel() {
             {/* Stage Filter */}
             <Popover open={openStage} onOpenChange={setOpenStage}>
                 <PopoverTrigger asChild>
-                    <Button variant="outline" size="sm" className="h-10 border-dashed">
+                    <Button variant="outline" size="sm" className="h-10 min-w-[140px] bg-white border-transparent text-slate-900 hover:bg-slate-200 hover:text-slate-900 shadow-sm border-dashed dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
                         Funding Stage
                         {filterStages.length > 0 && (
                             <>
@@ -117,7 +117,7 @@ export function FilterPanel() {
             {/* Sector Filter */}
             <Popover open={openSector} onOpenChange={setOpenSector}>
                 <PopoverTrigger asChild>
-                    <Button variant="outline" size="sm" className="h-10 border-dashed">
+                    <Button variant="outline" size="sm" className="h-10 min-w-[140px] bg-white border-transparent text-slate-900 hover:bg-slate-200 hover:text-slate-900 shadow-sm border-dashed dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
                         Sector
                         {filterSectors.length > 0 && (
                             <>
@@ -177,7 +177,7 @@ export function FilterPanel() {
 
             {/* Clear Filters */}
             {hasFilters && (
-                <Button variant="ghost" onClick={clearFilters} className="h-10 px-2 lg:px-3">
+                <Button variant="ghost" onClick={clearFilters} className="h-10 px-2 lg:px-3 text-white hover:bg-white hover:text-slate-900 dark:text-white dark:hover:bg-white dark:hover:text-slate-900">
                     Reset
                     <FilterX className="ml-2 h-4 w-4" />
                 </Button>

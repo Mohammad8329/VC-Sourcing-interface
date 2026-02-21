@@ -24,7 +24,7 @@ export function Sidebar() {
                 collapsed ? "w-16" : "w-64"
             )}
         >
-            <div className="flex h-14 items-center justify-between border-b px-4">
+            <div className="flex h-[72px] items-center justify-between border-b px-4 shrink-0">
                 <Link href="/companies" className="flex items-center gap-2 font-semibold">
                     <Target className="text-primary" size={24} />
                     {!collapsed && <span>VC Intelligence</span>}
@@ -39,7 +39,7 @@ export function Sidebar() {
                 </Button>
             </div>
 
-            <nav className="flex-1 space-y-2 p-2 mt-4">
+            <nav className="flex-1 space-y-2 p-2 mt-4 overflow-y-auto">
                 {links.map((link) => (
                     <Link
                         key={link.href}
@@ -60,10 +60,10 @@ export function Sidebar() {
             <div className="p-4 border-t">
                 {!collapsed ? (
                     <div className="text-xs text-muted-foreground">
-                        <span className="font-medium mr-1">Cmd K</span> to search globally
+                        <span className="font-medium mr-1">Ctrl K</span> to search globally
                     </div>
                 ) : (
-                    <div className="text-xs text-muted-foreground text-center" title="Cmd K to search">⌘K</div>
+                    <div className="text-xs text-muted-foreground text-center" title="Ctrl K to search">Ctrl K</div>
                 )}
             </div>
         </div>

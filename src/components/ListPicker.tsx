@@ -4,12 +4,15 @@ import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { useAppStore } from '@/store/useAppStore';
-import { Check, ListPlus, Plus } from 'lucide-react';
+import { Check, ListPlus, Plus, BookmarkCheck } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 export function ListPicker({ companyId, trigger }: { companyId: string, trigger?: React.ReactNode }) {
     const { lists, createList, addToList, removeFromList } = useAppStore();
     const [newListName, setNewListName] = useState('');
+
+    const isSaved = lists.some((list) => list.companyIds.includes(companyId));
 
     const handleCreate = (e: React.FormEvent) => {
         e.preventDefault();
@@ -22,8 +25,16 @@ export function ListPicker({ companyId, trigger }: { companyId: string, trigger?
         <Popover>
             <PopoverTrigger asChild>
                 {trigger || (
-                    <Button variant="outline" size="sm" className="gap-2 shrink-0">
-                        <ListPlus size={16} /> Save to List
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        className={cn(
+                            "gap-2 shrink-0",
+                            isSaved && "border-green-600 text-green-700 bg-green-50 hover:bg-green-100 hover:text-green-800 dark:border-green-500 dark:text-green-400 dark:bg-green-950/30 dark:hover:bg-green-900/40"
+                        )}
+                    >
+                        {isSaved ? <BookmarkCheck size={16} /> : <ListPlus size={16} />}
+                        {isSaved ? "Saved" : "Save to List"}
                     </Button>
                 )}
             </PopoverTrigger>

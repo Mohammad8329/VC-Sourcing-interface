@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { CompanyTable } from '@/components/CompanyTable';
 import { FilterPanel } from '@/components/FilterPanel';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import companiesData from '@/data/companies.json';
 import { Company } from '@/types';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,9 @@ import { useAppStore } from '@/store/useAppStore';
 import { toast } from 'sonner';
 
 export default function DiscoveryPage() {
-    const [search, setSearch] = useState('');
+    // Filter States
+    const search = useAppStore((state) => state.globalSearch);
+    const setSearch = useAppStore((state) => state.setGlobalSearch);
 
     // Filter States
     const filterSectors = useAppStore((state) => state.filterSectors);
@@ -41,7 +43,17 @@ export default function DiscoveryPage() {
             toast.error('Apply some filters to save a search');
             return;
         }
-        const name = prompt('Name for this saved search:', `Search on ${new Date().toLocaleDateString()}`);
+
+        let defaultName = `Search on ${new Date().toLocaleDateString()}`;
+        if (search) {
+            defaultName = search;
+        } else if (filterSectors.length > 0) {
+            defaultName = filterSectors.join(', ');
+        } else if (filterStages.length > 0) {
+            defaultName = filterStages.join(', ');
+        }
+
+        const name = prompt('Name for this saved search:', defaultName);
         if (name) {
             addSavedSearch({ name, filters: { search, sectors: filterSectors, stages: filterStages } });
             toast.success('Search saved successfully!');
@@ -49,30 +61,43 @@ export default function DiscoveryPage() {
     };
 
     return (
-        <div className="flex h-full">
-            <div className="flex-1 flex flex-col min-w-0 bg-muted/10 p-6 gap-6">
-                <div className="flex items-center justify-between">
-                    <div className="flex-1 max-w-xl relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        <Input
-                            placeholder="Search companies, descriptions, or tags..."
-                            className="pl-9"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <FilterPanel />
-                        <Button variant="outline" onClick={handleSaveSearch}>
-                            <Save className="h-4 w-4 mr-2" />
-                            Save Search
-                        </Button>
-                    </div>
+        <div className="flex flex-col min-h-full bg-muted/10">
+            {/* Top Navigation Bar */}
+            <header className="h-[72px] bg-slate-900 px-6 border-b border-slate-800 flex items-center justify-between sticky top-0 z-20">
+                <div className="flex-1 max-w-xl relative text-slate-900">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 z-10" />
+                    <Input
+                        placeholder="Search companies, descriptions, or tags..."
+                        className="pl-9 pr-9 h-10 bg-white border-transparent text-slate-900 placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-indigo-500 shadow-sm dark:bg-white dark:text-slate-900"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    {search && (
+                        <button
+                            onClick={() => setSearch('')}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none"
+                            aria-label="Clear search"
+                        >
+                            <X className="h-4 w-4" />
+                        </button>
+                    )}
                 </div>
+                <div className="flex items-center gap-3">
+                    <FilterPanel />
+                    <Button
+                        variant="outline"
+                        onClick={handleSaveSearch}
+                        className="h-10 w-[140px] bg-green-600 border-transparent text-white hover:bg-green-700 hover:text-white shadow-sm dark:bg-green-600 dark:text-white dark:hover:bg-green-700"
+                    >
+                        <Save className="h-4 w-4 mr-2" />
+                        Save Search
+                    </Button>
+                </div>
+            </header>
 
-                <div className="flex-1 overflow-auto rounded-lg border bg-card">
-                    <CompanyTable data={filteredCompanies} />
-                </div>
+            {/* Main Content Area */}
+            <div className="p-6 flex-1">
+                <CompanyTable data={filteredCompanies} />
             </div>
         </div>
     );

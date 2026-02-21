@@ -26,6 +26,8 @@ interface AppState {
     removeFromList: (listId: string, companyId: string) => void;
 
     // Filters State
+    globalSearch: string;
+    setGlobalSearch: (search: string) => void;
     filterSectors: string[];
     setFilterSectors: (sectors: string[]) => void;
     filterStages: string[];
@@ -37,8 +39,10 @@ export const useAppStore = create<AppState>()(
         (set) => ({
             savedSearches: [],
             lists: [],
+            globalSearch: '',
             filterSectors: [],
             filterStages: [],
+            setGlobalSearch: (search) => set({ globalSearch: search }),
             setFilterSectors: (sectors) => set({ filterSectors: sectors }),
             setFilterStages: (stages) => set({ filterStages: stages }),
             addSavedSearch: (search) =>

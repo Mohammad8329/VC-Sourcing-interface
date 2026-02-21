@@ -24,17 +24,18 @@ export function NoteEditor({ companyId }: { companyId: string }) {
 
     return (
         <div className="flex flex-col gap-3">
-            <Textarea
-                placeholder="Add your thesis, meeting notes, or red flags..."
-                className="min-h-[150px] resize-none border-muted bg-muted/30 focus-visible:bg-background"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-            />
-            <div className="flex justify-end">
+            <div className="flex items-center justify-between">
+                <h2 className="text-lg font-semibold tracking-tight">Analyst Notes</h2>
                 <Button size="sm" onClick={handleSave} className="gap-2">
                     <Save size={16} /> Save Notes
                 </Button>
             </div>
+            <Textarea
+                placeholder="Add your thesis, meeting notes, or red flags..."
+                className="min-h-[100px] h-[100px] resize-none border-muted bg-muted/30 focus-visible:bg-background"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+            />
         </div>
     );
 }

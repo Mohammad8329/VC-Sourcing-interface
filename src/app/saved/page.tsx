@@ -9,19 +9,16 @@ import { Search, Trash2, Play } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function SavedSearchesPage() {
-    const { savedSearches, removeSavedSearch } = useAppStore();
+    const { savedSearches, removeSavedSearch, setGlobalSearch, setFilterSectors, setFilterStages } = useAppStore();
     const router = useRouter();
 
     const handleRunSearch = (filters: any) => {
-        // Ideally we would pass these via URL query params or another state approach
-        // But since the scope is simple, we will just pass a message or URL params later
-        // For now, we'll construct basic query string from active filters to show the mechanics
-        const params = new URLSearchParams();
-        if (filters.search) params.set('q', filters.search);
-        if (filters.sectors?.length) params.set('sectors', filters.sectors.join(','));
-        if (filters.stages?.length) params.set('stages', filters.stages.join(','));
+        // Hydrate the store directly so it reflects automatically on the Discovery page
+        setGlobalSearch(filters.search || '');
+        setFilterSectors(filters.sectors || []);
+        setFilterStages(filters.stages || []);
 
-        router.push(`/companies?${params.toString()}`);
+        router.push(`/companies`);
     };
 
     return (
