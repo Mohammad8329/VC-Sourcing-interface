@@ -58,36 +58,56 @@ export default function SavedSearchesPage() {
                                             Saved {format(new Date(search.savedAt), 'MMM d, yyyy')}
                                         </div>
                                     </CardHeader>
-                                    <CardContent className="flex-1 space-y-3 pb-4">
-                                        {search.filters.search && (
-                                            <div className="text-sm">
-                                                <span className="text-muted-foreground mr-2">Query:</span>
-                                                <span className="font-medium">"{search.filters.search}"</span>
+                                    <CardContent className="flex-1 flex flex-col gap-5 pb-5">
+                                        {search.filters.search ? (
+                                            <div className="flex flex-col gap-1 mt-2">
+                                                <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Search Query</span>
+                                                <div className="text-3xl font-bold text-primary tracking-tight">
+                                                    <span className="text-muted-foreground/40 font-serif mr-1">"</span>
+                                                    {search.filters.search}
+                                                    <span className="text-muted-foreground/40 font-serif ml-1">"</span>
+                                                </div>
                                             </div>
-                                        )}
-                                        {search.filters.sectors && search.filters.sectors.length > 0 && (
-                                            <div>
-                                                <span className="text-muted-foreground text-xs block mb-1.5 uppercase tracking-wider font-semibold">Sectors</span>
-                                                <div className="flex flex-wrap gap-1.5">
-                                                    {search.filters.sectors.map((s: string) => (
-                                                        <Badge variant="secondary" key={s} className="font-normal text-xs">{s}</Badge>
-                                                    ))}
+                                        ) : (
+                                            <div className="flex flex-col gap-1 mt-2">
+                                                <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Search Query</span>
+                                                <div className="text-xl font-medium text-muted-foreground italic">
+                                                    No specific keywords
                                                 </div>
                                             </div>
                                         )}
-                                        {search.filters.stages && search.filters.stages.length > 0 && (
-                                            <div>
-                                                <span className="text-muted-foreground text-xs block mb-1.5 uppercase tracking-wider font-semibold">Stages</span>
-                                                <div className="flex flex-wrap gap-1.5">
-                                                    {search.filters.stages.map((s: string) => (
-                                                        <Badge variant="outline" key={s} className="font-normal text-xs">{s}</Badge>
-                                                    ))}
+
+                                        <div className="w-full h-px bg-border/40 my-1"></div>
+
+                                        <div className="space-y-4">
+                                            {search.filters.sectors && search.filters.sectors.length > 0 && (
+                                                <div>
+                                                    <span className="text-muted-foreground text-xs block mb-2 uppercase tracking-wider font-medium">Sectors Included</span>
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {search.filters.sectors.map((s: string) => (
+                                                            <Badge variant="secondary" key={s} className="font-normal bg-secondary/50 hover:bg-secondary/70 transition-colors text-xs">{s}</Badge>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
-                                        {filterCount === 0 && (
-                                            <div className="text-sm text-muted-foreground italic">No filters applied (All companies)</div>
-                                        )}
+                                            )}
+
+                                            {search.filters.stages && search.filters.stages.length > 0 && (
+                                                <div>
+                                                    <span className="text-muted-foreground text-xs block mb-2 uppercase tracking-wider font-medium">Stages Filtered</span>
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {search.filters.stages.map((s: string) => (
+                                                            <Badge variant="outline" key={s} className="font-medium text-xs border-border/60">{s}</Badge>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {filterCount === 0 && (
+                                                <div className="flex items-center justify-center p-4 bg-muted/20 rounded-md border border-dashed border-border/50">
+                                                    <span className="text-sm text-muted-foreground italic tracking-wide">Showing all available companies</span>
+                                                </div>
+                                            )}
+                                        </div>
                                     </CardContent>
                                     <CardFooter className="pt-0 flex gap-2 border-t p-4 mt-auto bg-muted/20">
                                         <Button variant="default" className="flex-1" onClick={() => handleRunSearch(search.filters)}>

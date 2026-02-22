@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { useAppStore } from '@/store/useAppStore';
-import { Check, ListPlus, Plus, BookmarkCheck } from 'lucide-react';
+import { Check, Bookmark, Plus, BookmarkCheck } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
@@ -33,7 +33,7 @@ export function ListPicker({ companyId, trigger }: { companyId: string, trigger?
                             isSaved && "border-green-600 text-green-700 bg-green-50 hover:bg-green-100 hover:text-green-800 dark:border-green-500 dark:text-green-400 dark:bg-green-950/30 dark:hover:bg-green-900/40"
                         )}
                     >
-                        {isSaved ? <BookmarkCheck size={16} /> : <ListPlus size={16} />}
+                        {isSaved ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
                         {isSaved ? "Saved" : "Save to List"}
                     </Button>
                 )}

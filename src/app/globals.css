@@ -50,95 +50,103 @@
 
 :root {
   --radius: 0rem;
-  /* Beige background */
-  --background: oklch(0.98 0.01 80);
-  /* Dark slate foreground */
-  --foreground: oklch(0.25 0.02 260);
-  /* White/light beige cards */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.02 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.02 260);
-  /* Slate Blue primary (complementary to beige) */
-  --primary: oklch(0.45 0.1 260);
-  --primary-foreground: oklch(0.98 0.01 80);
-  /* Pale slate secondary */
-  --secondary: oklch(0.93 0.04 260);
-  --secondary-foreground: oklch(0.3 0.06 260);
-  /* Muted beige */
-  --muted: oklch(0.92 0.02 85);
-  --muted-foreground: oklch(0.55 0.04 260);
-  /* Accents */
-  --accent: oklch(0.93 0.04 260);
-  --accent-foreground: oklch(0.3 0.06 260);
+  /* User Provided Palette: 
+     #1A1A1A (Obsidian) - Sharp text and icons
+     #FAF9F6 (Ivory) - Main background
+     #C5A059 (Muted Gold) - Accent color
+     #E5E5E5 (Platinum) - Dividers and lines */
+
+  /* Ivory background */
+  --background: #FAF9F6;
+  /* Obsidian foreground text */
+  --foreground: #1A1A1A;
+  /* Pure White cards for clean layering */
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  /* Obsidian primary */
+  --primary: #1A1A1A;
+  --primary-foreground: #FAF9F6;
+  /* Platinum secondary blocks */
+  --secondary: #E5E5E5;
+  --secondary-foreground: #1A1A1A;
+  /* Platinum muted, Obsidian text */
+  --muted: #E5E5E5;
+  --muted-foreground: #1A1A1A;
+  /* Muted Gold accents */
+  --accent: #C5A059;
+  --accent-foreground: #FAF9F6;
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.01 80);
-  /* Warm borders and cool inputs/rings */
-  --border: oklch(0.75 0.03 85);
-  --input: oklch(0.75 0.03 85);
-  --ring: oklch(0.45 0.1 260);
+  --destructive-foreground: #FFFFFF;
+  /* Platinum borders/inputs */
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #1A1A1A;
 
-  /* Charts - shades of slate blue and complementary tones */
-  --chart-1: oklch(0.45 0.1 260);
-  --chart-2: oklch(0.55 0.08 260);
-  --chart-3: oklch(0.65 0.06 260);
-  --chart-4: oklch(0.75 0.04 260);
-  --chart-5: oklch(0.35 0.12 260);
+  /* Charts */
+  --chart-1: #1A1A1A;
+  --chart-2: #C5A059;
+  --chart-3: #E5E5E5;
+  --chart-4: #1A1A1A;
+  --chart-5: #C5A059;
 
-  /* Sidebar */
-  --sidebar: oklch(0.96 0.02 85);
-  --sidebar-foreground: oklch(0.25 0.02 260);
-  --sidebar-primary: oklch(0.45 0.1 260);
-  --sidebar-primary-foreground: oklch(0.98 0.01 80);
-  --sidebar-accent: oklch(0.91 0.03 260);
-  --sidebar-accent-foreground: oklch(0.3 0.06 260);
-  --sidebar-border: oklch(0.75 0.03 85);
-  --sidebar-ring: oklch(0.45 0.1 260);
+  /* Sidebar - Obsidian heavy section, Ivory text */
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FAF9F6;
+  --sidebar-primary: #FAF9F6;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent: #C5A059;
+  --sidebar-accent-foreground: #1A1A1A;
+  /* Platinum borders for sidebar */
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #FAF9F6;
 }
 
 .dark {
-  /* Dark slate background */
-  --background: oklch(0.18 0.02 260);
-  /* Beige foreground */
-  --foreground: oklch(0.98 0.01 80);
-  /* Slightly lighter dark slate cards */
-  --card: oklch(0.22 0.02 260);
-  --card-foreground: oklch(0.98 0.01 80);
-  --popover: oklch(0.22 0.02 260);
-  --popover-foreground: oklch(0.98 0.01 80);
-  /* Slate Blue primary for dark mode */
-  --primary: oklch(0.65 0.1 260);
-  --primary-foreground: oklch(0.18 0.02 260);
-  /* Darker muted tones */
-  --secondary: oklch(0.3 0.04 260);
-  --secondary-foreground: oklch(0.98 0.01 80);
-  --muted: oklch(0.28 0.03 260);
-  --muted-foreground: oklch(0.7 0.03 260);
-  --accent: oklch(0.3 0.04 260);
-  --accent-foreground: oklch(0.98 0.01 80);
+  /* Obsidian background */
+  --background: #1A1A1A;
+  /* Ivory foreground */
+  --foreground: #FAF9F6;
+  /* Obsidian cards */
+  --card: #1A1A1A;
+  --card-foreground: #FAF9F6;
+  --popover: #1A1A1A;
+  --popover-foreground: #FAF9F6;
+  /* Ivory primary for dark mode */
+  --primary: #FAF9F6;
+  --primary-foreground: #1A1A1A;
+  /* Obsidian secondary tones */
+  --secondary: #1A1A1A;
+  --secondary-foreground: #FAF9F6;
+  --muted: #1A1A1A;
+  --muted-foreground: #E5E5E5;
+  /* Muted Gold accents */
+  --accent: #C5A059;
+  --accent-foreground: #1A1A1A;
   --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.98 0.01 80);
-  /* Adjusted borders */
-  --border: oklch(0.24 0.03 260);
-  --input: oklch(0.24 0.03 260);
-  --ring: oklch(0.65 0.1 260);
+  --destructive-foreground: #FFFFFF;
+  /* Muted Gold or Platinum borders */
+  --border: #C5A059;
+  --input: #C5A059;
+  --ring: #FAF9F6;
 
   /* Charts */
-  --chart-1: oklch(0.65 0.1 260);
-  --chart-2: oklch(0.55 0.08 260);
-  --chart-3: oklch(0.45 0.1 260);
-  --chart-4: oklch(0.75 0.06 260);
-  --chart-5: oklch(0.35 0.12 260);
+  --chart-1: #FAF9F6;
+  --chart-2: #C5A059;
+  --chart-3: #E5E5E5;
+  --chart-4: #1A1A1A;
+  --chart-5: #FAF9F6;
 
   /* Sidebar */
-  --sidebar: oklch(0.16 0.02 260);
-  --sidebar-foreground: oklch(0.98 0.01 80);
-  --sidebar-primary: oklch(0.65 0.1 260);
-  --sidebar-primary-foreground: oklch(0.18 0.02 260);
-  --sidebar-accent: oklch(0.28 0.03 260);
-  --sidebar-accent-foreground: oklch(0.98 0.01 80);
-  --sidebar-border: oklch(0.24 0.03 260);
-  --sidebar-ring: oklch(0.65 0.1 260);
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FAF9F6;
+  --sidebar-primary: #FAF9F6;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent: #C5A059;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #FAF9F6;
 }
 
 @layer base {

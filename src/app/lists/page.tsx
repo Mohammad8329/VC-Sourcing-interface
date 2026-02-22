@@ -83,8 +83,8 @@ export default function ListsPage() {
                                 key={list.id}
                                 onClick={() => setActiveListId(list.id)}
                                 className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${activeList?.id === list.id
-                                        ? 'bg-primary text-primary-foreground font-medium shadow-sm'
-                                        : 'hover:bg-muted text-foreground'
+                                    ? 'bg-primary text-primary-foreground font-medium shadow-sm'
+                                    : 'hover:bg-muted text-foreground'
                                     }`}
                             >
                                 <span className="truncate pr-2">{list.name}</span>
@@ -149,7 +149,7 @@ export default function ListsPage() {
                                                         </Link>
                                                         <Badge variant="secondary" className="font-normal text-xs">{company.sector}</Badge>
                                                     </div>
-                                                    <p className="text-sm text-muted-foreground line-clamp-1">{company.description}</p>
+                                                    <p className="text-sm text-muted-foreground opacity-60 line-clamp-1">{company.description}</p>
                                                     <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                                                         <span>{company.stage}</span>
                                                         <span>•</span>

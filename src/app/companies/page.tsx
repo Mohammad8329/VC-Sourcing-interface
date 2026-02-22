@@ -63,7 +63,7 @@ export default function DiscoveryPage() {
     return (
         <div className="flex flex-col min-h-full bg-muted/10">
             {/* Top Navigation Bar */}
-            <header className="h-[72px] bg-slate-900 px-6 border-b border-slate-800 flex items-center justify-between sticky top-0 z-20">
+            <header className="h-[72px] bg-primary px-6 text-primary-foreground border-b border-primary/20 flex items-center justify-between sticky top-0 z-20">
                 <div className="flex-1 max-w-xl relative text-slate-900">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 z-10" />
                     <Input
@@ -87,7 +87,7 @@ export default function DiscoveryPage() {
                     <Button
                         variant="outline"
                         onClick={handleSaveSearch}
-                        className="h-10 w-[140px] bg-green-600 border-transparent text-white hover:bg-green-700 hover:text-white shadow-sm dark:bg-green-600 dark:text-white dark:hover:bg-green-700"
+                        className="h-10 w-[140px] bg-accent border-transparent text-black hover:text-[#E5E5E5] hover:bg-accent/90 shadow-sm"
                     >
                         <Save className="h-4 w-4 mr-2" />
                         Save Search

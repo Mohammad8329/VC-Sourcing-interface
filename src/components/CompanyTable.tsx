@@ -11,7 +11,7 @@ import {
 import { Company } from '@/types';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowUpDown, ListPlus, BookmarkCheck, ExternalLink } from 'lucide-react';
+import { ArrowUpDown, ListPlus, BookmarkCheck, Bookmark, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ListPicker } from '@/components/ListPicker';
@@ -68,31 +68,31 @@ export function CompanyTable({ data }: CompanyTableProps) {
                     <TableHeader className="sticky top-0 bg-secondary/50 backdrop-blur z-10 border-b shadow-sm">
                         <TableRow>
                             <TableHead className="w-[40%] min-w-[250px]">
-                                <Button variant="ghost" size="sm" onClick={() => handleSort('name')} className="-ml-3 h-8 data-[state=open]:bg-accent">
+                                <Button variant="ghost" onClick={() => handleSort('name')} className="-ml-3 h-10 text-base data-[state=open]:bg-accent">
                                     Company
                                     <ArrowUpDown className="ml-2 h-4 w-4" />
                                 </Button>
                             </TableHead>
                             <TableHead className="w-[15%]">Sector</TableHead>
                             <TableHead className="w-[15%]">
-                                <Button variant="ghost" size="sm" onClick={() => handleSort('stage')} className="-ml-3 h-8">
+                                <Button variant="ghost" onClick={() => handleSort('stage')} className="-ml-3 h-10 text-base">
                                     Stage
                                     <ArrowUpDown className="ml-2 h-4 w-4" />
                                 </Button>
                             </TableHead>
                             <TableHead className="w-[15%] hidden md:table-cell">
-                                <Button variant="ghost" size="sm" onClick={() => handleSort('totalFunding')} className="-ml-3 h-8">
+                                <Button variant="ghost" onClick={() => handleSort('totalFunding')} className="-ml-3 h-10 text-base">
                                     Funding
                                     <ArrowUpDown className="ml-2 h-4 w-4" />
                                 </Button>
                             </TableHead>
                             <TableHead className="w-[15%] hidden lg:table-cell">
-                                <Button variant="ghost" size="sm" onClick={() => handleSort('employees')} className="-ml-3 h-8">
+                                <Button variant="ghost" onClick={() => handleSort('employees')} className="-ml-3 h-10 text-base">
                                     Employees
                                     <ArrowUpDown className="ml-2 h-4 w-4" />
                                 </Button>
                             </TableHead>
-                            <TableHead className="w-[10%] text-right pr-6">Actions</TableHead>
+                            <TableHead className="w-[10%] text-right pr-6">Save</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -102,9 +102,9 @@ export function CompanyTable({ data }: CompanyTableProps) {
                                 className="group cursor-pointer hover:bg-muted/50 transition-colors"
                                 onClick={() => router.push(`/companies/${company.id}`)}
                             >
-                                <TableCell className="truncate">
-                                    <div className="font-medium text-primary truncate">{company.name}</div>
-                                    <div className="text-xs text-muted-foreground mt-1 truncate">
+                                <TableCell className="truncate py-3">
+                                    <div className="font-medium text-primary text-base truncate">{company.name}</div>
+                                    <div className="text-sm text-muted-foreground opacity-60 mt-1 truncate">
                                         {company.description}
                                     </div>
                                 </TableCell>
@@ -137,7 +137,7 @@ export function CompanyTable({ data }: CompanyTableProps) {
                                                         className="h-8 w-8 text-muted-foreground hover:text-primary"
                                                         title="Save to list"
                                                     >
-                                                        <ListPlus size={16} />
+                                                        <Bookmark size={16} />
                                                     </Button>
                                                 )
                                             }

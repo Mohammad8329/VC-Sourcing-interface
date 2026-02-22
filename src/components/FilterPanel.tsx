@@ -56,7 +56,7 @@ export function FilterPanel() {
             {/* Stage Filter */}
             <Popover open={openStage} onOpenChange={setOpenStage}>
                 <PopoverTrigger asChild>
-                    <Button variant="outline" size="sm" className="h-10 min-w-[140px] bg-white border-transparent text-slate-900 hover:bg-slate-200 hover:text-slate-900 shadow-sm border-dashed dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
+                    <Button variant="outline" size="sm" className="h-10 min-w-[140px] bg-accent border-transparent text-black hover:text-[#E5E5E5] hover:bg-accent/90 shadow-sm">
                         Funding Stage
                         {filterStages.length > 0 && (
                             <>
@@ -117,7 +117,7 @@ export function FilterPanel() {
             {/* Sector Filter */}
             <Popover open={openSector} onOpenChange={setOpenSector}>
                 <PopoverTrigger asChild>
-                    <Button variant="outline" size="sm" className="h-10 min-w-[140px] bg-white border-transparent text-slate-900 hover:bg-slate-200 hover:text-slate-900 shadow-sm border-dashed dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
+                    <Button variant="outline" size="sm" className="h-10 min-w-[140px] bg-accent border-transparent text-black hover:text-[#E5E5E5] hover:bg-accent/90 shadow-sm">
                         Sector
                         {filterSectors.length > 0 && (
                             <>
